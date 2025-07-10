@@ -35,13 +35,12 @@ Launch 'launch.py' file:
 Left hand：
 
 ```BASH
-ros2 launch rohand_lites_urdf_ros2 rohand_left_rviz2.launch.py 
+ros2 launch rohand_lites_urdf_ros2 left_rviz2.launch.py 
 ```
 
 Right hand：
 
 ```BASH
-ros2 launch rohand_lites_urdf_ros2 rohand_right_rviz2.launch.py
+ros2 launch rohand_lites_urdf_ros2 right_rviz2.launch.py
 ```
-"# rohand_lites_urdf_ros2" 
-"# rohand_lites_urdf_ros2" 
+

@@ -32,7 +32,6 @@ def generate_launch_description():
         package=package_name,
         executable="rohand_joint_state_gui",
         name="rohand_left_joint_state_gui",
-        # namespace="rohand_left",
         remappings=[("/joint_states", "/rohand_left/rohand_left_urdf_node/joint_states")],
         arguments=[urdf_model_path]
     )

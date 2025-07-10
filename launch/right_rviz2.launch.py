@@ -48,7 +48,7 @@ def generate_launch_description():
     rviz2_node = Node(
         package="rviz2",
         executable="rviz2",
-        name="rohand_left_rviz2",
+        name="rohand_right_rviz2",
         output="screen",
         arguments=["-d", rviz_path]
     )

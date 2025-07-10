@@ -44,29 +44,29 @@ def ATAN(value):
 # Parameters in calibration:
 ThumbParams = [
     #L_BP0, L_OP,  L_AB,  L_OA,  ∠OAR, L_CT0, L_OT,  ∠EOQ,  L_OE, L_CD,  L_ED,  ∠DEF,  L_EF,    XE, L_DF,   ∠EFD, L_CG
-    11.48, 0.48, 10.98, 10.00, 0.5983, 43.78, 2.08, 0.2155, 52.52, 9.90, 11.30, 1.2976, 27.54, 51.30, 26.8, 0.4184, 13.31 # thumb
+    7.49,   0.48,  11.00, 10.00, 0.5983, 39.79, 2.13, 0.2089, 49.91, 9.01, 10.27, 1.3161, 25.20, 48.83, 24.70, 0.4141, 12.48 # thumb
 ]
 
 FingerParams = [
     #X_A0, L_AP,  L_AC,  L_OC,  ∠BOQ,  ∠COD,  ∠EDF,  L_OD,  L_CD, L_OB, L_DE,  L_BE,  L_DF
-    [12.70, 8.60, 19.63, 14.25, 0.5353, 0.7624, 0.8496, 35.92, 27.44, 8.63, 7.69, 34.14, 50.23], # index_finger
-    [13.17, 8.60, 19.63, 14.31, 0.5353, 0.7763, 0.8496, 41.01, 32.39, 8.63, 7.69, 39.48, 50.23], # middle_finger
-    [13.00, 8.60, 19.63, 14.25, 0.5353, 0.7624, 0.8496, 35.92, 27.44, 8.63, 7.69, 34.14, 50.23], # ring_finger
-    [13.15, 8.60, 19.63, 14.27, 0.5353, 0.7502, 0.8141, 31.93, 23.59, 8.63, 7.53, 30.85, 35.53]  # little_finger
+    [ 6.20, 8.93, 16.64, 12.85, 0.5253, 0.7782, 0.9313, 32.65, 25.17, 7.97, 7.69, 31.07, 43.27], # index_finger
+    [ 6.49, 8.93, 16.64, 13.06, 0.5253, 0.7781, 0.9342, 37.52, 29.67, 7.97, 7.69, 35.92, 43.25], # middle_finger
+    [ 6.19, 8.93, 16.64, 12.84, 0.5253, 0.7771, 0.9313, 32.67, 25.18, 7.97, 7.69, 31.07, 43.26], # ring_finger
+    [ 6.37, 8.93, 16.64, 13.08, 0.5253, 0.7482, 0.8216, 29.06, 21.41, 7.97, 7.53, 28.08, 33.11]  # little_finger
 ]
 
 # Offset angle to the initial state in URDF, the output angle needs to minus it.
 OffsetAngleForURDF_Thumb = [
     #proximal,          #connecting,        #distal,           
-    0.4243102998823798, 2.8587571556405598, 1.5319419424521146
+    0.6709008910354062, 2.7972123559022117, 1.3087610621598222
 ]
 
 OffsetAngleForURDF = [
     #abpart,            proximal,           distal,             connecting,
-    [2.932191219049254, 2.8069436083614603, 2.5070833024292147, 2.0524510416836774],
-    [2.9149674382495734, 2.7765308802396014, 2.5671093077696816, 2.050822356942187],
-    [2.92349523247357, 2.7806045952072487, 2.4744162317989837, 2.0228874728582893],
-    [2.91807750665145, 2.7543096279771366, 2.4606460165701547, 1.9656409021066734]
+    [3.2234745075598523, 3.289937319993764, 3.1162262515620833, 2.626962850209491],
+    [3.1833006883299437, 3.2373129742644506, 3.1008555171484615, 2.58818205017669],
+    [3.2251391241575877, 3.2909284310550326, 3.1132137783847593, 2.627968560411981],
+    [3.1899970337180843, 3.219561574737824, 3.0455334793320183, 2.5281789803624695]
 ]
 
 #
@@ -173,10 +173,10 @@ def FINGER_OffsetToAngle(finger_id, offset_to_ref):
 
     Angle_FDO = Angle_EDF + Angle_EDO              # Angle of distal link
 
-    Angle_Finger[finger_id][0] = Angle_CAR - OffsetAngleForURDF[finger_id][0]# slider_abpart
-    Angle_Finger[finger_id][1] = Angle_DOP - OffsetAngleForURDF[finger_id][1]# proximal
-    Angle_Finger[finger_id][2] = Angle_FDO - OffsetAngleForURDF[finger_id][2]# distal
-    Angle_Finger[finger_id][3] = Angle_EBO - OffsetAngleForURDF[finger_id][3]# connecting
+    Angle_Finger[finger_id][0] = -Angle_CAR + OffsetAngleForURDF[finger_id][0]# slider_abpart
+    Angle_Finger[finger_id][1] = -Angle_DOP + OffsetAngleForURDF[finger_id][1]# proximal
+    Angle_Finger[finger_id][2] = -Angle_FDO + OffsetAngleForURDF[finger_id][2]# distal
+    Angle_Finger[finger_id][3] = -Angle_EBO + OffsetAngleForURDF[finger_id][3]# connecting
 
     return Angle_Finger[finger_id]
 
